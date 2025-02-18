@@ -57,7 +57,24 @@ public class GameGUI extends AppCompatActivity {
             index++;
         } else {
             int score = (int) ((double) points /(double) colorDetails.size() * 100);
-            Toast.makeText(this, "Your score is "+ score,Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, "Your score is "+ score,Toast.LENGTH_LONG).show();
+            new AlertDialog.Builder(this)
+                    .setMessage("Your score is " + score + "%" + "\n Play again?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                            //restartGame();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                    .show();
 
         }
     }
